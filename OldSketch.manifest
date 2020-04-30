@@ -1,0 +1,13 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"addin",
+	"id":	"238480f6-1c26-45ee-855b-92ecc7c16324",
+	"author":	"Nico Schlueter",
+	"description":	{
+		"":	"Adds the SketchCreate toolbar to the Solid tab, similar to how it was before the tabbed toolbar."
+	},
+	"version":	"1.0",
+	"runOnStartup":	false,
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}
