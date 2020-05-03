@@ -113,11 +113,7 @@ def addControl(controls, control):
     if(control.objectType == "adsk::core::CommandControl"):
         con = controls.addCommand(control.commandDefinition)
         con.isPromotedByDefault = control.commandDefinition.id in promoted
-        # This worked once, but doesn't now. We can only hope it works again
-        try:
-            con.isPromoted = control.isPromoted
-        except:
-            pass
+        
 
     elif(control.objectType == "adsk::core::DropDownControl"):
         con = controls.addDropDown(
