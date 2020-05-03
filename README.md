@@ -5,11 +5,10 @@ A simple Add-In for Autodesk Fusion360 that shows the SketchCreate ToolbarPanel 
 
 # Features
 * Copys all controls from the SketchCreate Panel
-* Promotes the same controls that are promoted in the SketchCreate Panel*
+* List of promoted things at top of script (Sorry, API bug)
 
 # Limitations
 * Promoted controls may be in a different order
-* Dropdowns have no icon
 
 # Installation
 * Download the Project as ZIP and extract it somewhere you can find again, but won't bother you. (or use git to clone it there)
@@ -19,6 +18,9 @@ A simple Add-In for Autodesk Fusion360 that shows the SketchCreate ToolbarPanel 
 * The Add-in should now appear in the "My Add-Ins" list. Select it in the list. If desired check the "Run ond Startup" checkbox and hit run.
 
 # Changelog
+
+## 1.1 Release
+- Removed mirroring of promoted commands due to API bug
 
 ## 1.0 Release
 - Initial release
