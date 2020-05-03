@@ -1,6 +1,65 @@
 #Author-Nico Schlueter
 #Description-Adds the Sketch>Design toolbar to the Solid tab, similar to how it was before the tabbed toolbar.
 
+
+# Add the ID's of CommandDefinitions you want on the toolbar here
+promoted = [
+    "DrawPolyline",
+    "ShapeRectangleTwoPoint",
+    "CircleCenterRadius",
+    "DrawSpline"
+] 
+
+# List of ID's
+#   DrawPolyline
+#
+#   ShapeRectangleTwoPoint
+#   ShapeRectangleThreePoint
+#   ShapeRectangleCenter
+#
+#   CircleCenterRadius
+#   CircleTwoPoint
+#   CircleThreePoint
+#   CircleTanTanRadius
+#   CircleThreeTangent
+#
+#   ArcThreePoint
+#   ArcCenterTwoPoint
+#   ArcTangent
+#
+#   ShapePolygonCircumscribed
+#   ShapePolygonInscribed
+#   ShapePolygonEdge
+#
+#   CircleElipse
+#
+#   ShapeSlotCenterToCenter
+#   ShapeSlotOverall
+#   ShapeSlotCenterPoint
+#   ShapeArcSlotThreePoint
+#   ShapeArcSlotCenterTwoPoint
+#   
+#   DrawSpline
+#   DrawCVMSpline3D
+#   DrawCVMSpline5D
+#
+#   ConicCurveCmd
+#   DrawPoint
+#   TextCmd
+#   FitCurvesToSectionCommand
+#   MirrorSketchCommand
+#   CircularSketchPatternCommand
+#   RectangularSketchPatternCommand
+#   
+#   ProjectNewCmd
+#   IntersectCmd
+#   Include3DGeometry
+#   ProjectToSurface
+#   IntersectionCurve
+#   
+#   SketchDimension
+
+
 import adsk.core, adsk.fusion, adsk.cam, traceback
 
 # API does not allow getting Dropdown names
@@ -14,7 +73,6 @@ names = {
     'ProjectIncludeDropDown' : "Project / Include"
 }
 
-
 def run(context):
     ui = None
     try:
@@ -25,7 +83,7 @@ def run(context):
 
         oldSketchCreatePanel = solidTab.toolbarPanels.add(
             "OldSketchCreatePanel",
-            sketchCreatePanel.name,
+            "Sketch",
             "SolidCreatePanel",
             True
         )
@@ -51,15 +109,20 @@ def stop(context):
 
 
 def addControl(controls, control):
+    global promoted
     if(control.objectType == "adsk::core::CommandControl"):
         con = controls.addCommand(control.commandDefinition)
-        con.isPromoted = control.isPromoted
-        con.isPromotedByDefault = control.isPromotedByDefault
+        con.isPromotedByDefault = control.commandDefinition.id in promoted
+        # This worked once, but doesn't now. We can only hope it works again
+        try:
+            con.isPromoted = control.isPromoted
+        except:
+            pass
 
     elif(control.objectType == "adsk::core::DropDownControl"):
         con = controls.addDropDown(
             getNameFromId(control.id),
-            "" #TODO: Extract icons
+            ""
         )
 
         for i in control.controls:
