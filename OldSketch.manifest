@@ -4,7 +4,9 @@
 	"id":	"238480f6-1c26-45ee-855b-92ecc7c16324",
 	"author":	"Nico Schlueter",
 	"description":	{
-		"":	"Adds the SketchCreate toolbar to the Solid tab, similar to how it was before the tabbed toolbar."
+		"":	"Adds the SketchCreate toolbar to the Solid tab, similar to how it was before the tabbed toolbar.
+Privacy Policy:
+https://github.com/NicoSchlueter/OldSketch/blob/master/AppStorePrivacyPolicy.txt"
 	},
 	"version":	"1.0",
 	"runOnStartup":	false,
